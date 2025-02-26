@@ -1,0 +1,24 @@
+sentence-transformers==2.2.2
+langchain
+flask
+pypdf
+python-dotenv
+pinecone[grpc]
+langchain-pinecone
+langchain_community
+langchain-core
+langchain-google-genai
+-e .
+
+
+
+# sentence-transformer==2.2.2
+# langchain
+# flask
+# pypdf
+# python-dotenv
+# langchain-community
+# langchain-core
+# langchain-google-genai
+# faiss-cpu
+# -e .
