@@ -2,6 +2,10 @@
 
 TrainXpert is an advanced AI-powered chatbot designed to provide fitness-related insights using Retrieval-Augmented Generation (RAG) techniques. By combining Google Gemini’s powerful text-generation capabilities with Pinecone’s vector-based retrieval system, TrainXpert delivers precise, context-aware answers to fitness queries.
 
+
+https://github.com/user-attachments/assets/020c119d-bb15-4ab1-a5c7-f811c7adc714
+
+
 ## 📂 Project Structure  
 📂 TrainXpert  
  ┣ 📂 src  
