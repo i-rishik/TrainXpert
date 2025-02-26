@@ -10,13 +10,14 @@ TrainXpert is an advanced AI-powered chatbot designed to provide fitness-related
  ┣ 📂 static  
  ┃ ┣ 📜 styles.css  
  ┣ 📂 templates  
- ┃ ┣ 📜 index.html  
+ ┃ ┣ 📜 index.html
+ ┣ 📜 .env  
  ┣ 📜 app.py  
  ┣ 📜 requirements.txt  
  ┣ 📜 setup.py  
  ┣ 📜 vector_store.py  
- ┣ 📜 README.md
- ┣ 📜 gitignore  
+ ┣ 📜 README.md  
+ ┣ 📜 .gitignore  
 
  ## ✨ Features  
 ✅ **Natural Language Understanding:** Uses `Google Generative AI` for intelligent responses.  
