@@ -40,6 +40,7 @@
 							<form id="messageArea" class="input-group">
                                 <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
 								<div class="input-group-append">
+									<button type="button" id="micButton" class="input-group-text" title="Voice Input"><i class="fas fa-microphone"></i></button>
 									<button type="submit" id="send" class="input-group-text send_btn" title="Send"><i class="fas fa-location-arrow"></i></button>
 								</div>
 							</form>
@@ -52,10 +53,7 @@
 		<script>
 			$(document).ready(function() {
 				$("#messageArea").on("submit", function(event) {
-					const date = new Date();
-					const hour = date.getHours();
-					const minute = date.getMinutes();
-					const str_time = hour+":"+minute;
+					let str_time = new Date().toLocaleTimeString();
 					var rawText = $("#text").val();
 
 					var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + rawText + '<span class="msg_time_send">'+ str_time + '</span></div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>';
@@ -63,18 +61,69 @@
 					$("#text").val("");
 					$("#messageFormeight").append(userHtml);
 
+
 					$.ajax({
-						data: {
-							msg: rawText,	
-						},
-						type: "POST",
-						url: "/get",
+    					data: { msg: rawText },
+    					type: "POST",
+    					url: "/get",
 					}).done(function(data) {
-						var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://cdn-icons-png.flaticon.com/128/3564/3564504.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + data + '<span class="msg_time">' + str_time + '</span></div></div>';
-						$("#messageFormeight").append($.parseHTML(botHtml));
+    					var botHtml = '<div class="d-flex justify-content-start mb-4">'
+                					+ '<div class="img_cont_msg">'
+                					+ '<img src="https://cdn-icons-png.flaticon.com/128/3564/3564504.png" class="rounded-circle user_img_msg"></div>'
+                					+ '<div class="msg_cotainer">' + data.answer + '<span class="msg_time">' + str_time + '</span></div></div>';
+
+    					$("#messageFormeight").append($.parseHTML(botHtml));
 					});
+
 					event.preventDefault();
 				});
+
+				$("#micButton").on("click", function() {
+    				$("#micButton").prop("disabled", true).text("Listening...");
+
+    				$.ajax({
+        				type: "POST",
+        				url: "/voice",
+        				contentType: "application/json",
+        				data: JSON.stringify({ action: "start" }),  // Send some data to trigger Flask processing
+    				}).done(function(data) {
+        				$("#micButton").prop("disabled", false).html('<i class="fas fa-microphone"></i>');
+
+        				if (data.answer === "Could not understand. Try again.") {
+            				alert("Voice input failed. Please try again.");
+            				return;
+        					}
+
+        				let str_time = new Date().toLocaleTimeString();
+
+        				var userHtml = `<div class="d-flex justify-content-end mb-4">
+                        				    <div class="msg_cotainer_send">
+                                				🎙️ ${data.query}
+                                				<span class="msg_time_send">${str_time}</span>
+                            				</div>
+                            				<div class="img_cont_msg">
+                                				<img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg">
+                            				</div>
+                        				</div>`;
+        				$("#messageFormeight").append(userHtml);
+
+        				var botHtml = `<div class="d-flex justify-content-start mb-4">
+                            				<div class="img_cont_msg">
+                                				<img src="https://cdn-icons-png.flaticon.com/128/3564/3564504.png" class="rounded-circle user_img_msg">
+                            				</div>
+                            				<div class="msg_cotainer">
+                            					${data.answer}
+                                				<span class="msg_time">${str_time}</span>
+                            				</div>
+                        				</div>`;
+        				$("#messageFormeight").append($.parseHTML(botHtml));
+    				}).fail(function(jqXHR, textStatus, errorThrown) {
+        				console.error("AJAX Error:", textStatus, errorThrown);
+        				alert("Error: Could not process voice input.");
+        				$("#micButton").prop("disabled", false).html('<i class="fas fa-microphone"></i>');
+    				});
+				});
+
 			});
 		</script>
         

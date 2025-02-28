@@ -28,7 +28,7 @@ body,html{
 	border-bottom: 0 !important;
 }
 .card-footer{
-border-radius: 0 0 15px 15px !important;
+	border-radius: 0 0 15px 15px !important;
 	border-top: 0 !important;
 }
 .container{
@@ -41,8 +41,8 @@ border-radius: 0 0 15px 15px !important;
 	color:white !important;
 }
 .search:focus{
-	 box-shadow:none !important;
-   outline:0px !important;
+	box-shadow:none !important;
+	outline:0px !important;
 }
 .type_msg{
 	background-color: rgba(0,0,0,0.3) !important;
@@ -51,31 +51,56 @@ border-radius: 0 0 15px 15px !important;
 	height: 60px !important;
 	overflow-y: auto;
 }
-	.type_msg:focus{
-	 box-shadow:none !important;
-   outline:0px !important;
+.type_msg:focus{
+	box-shadow:none !important;
+	outline:0px !important;
+}
+.attach_btn, .send_btn, .search_btn{
+	background-color: rgba(0,0,0,0.3) !important;
+	border:0 !important;
+	color: white !important;
+	cursor: pointer;
 }
 .attach_btn{
 	border-radius: 15px 0 0 15px !important;
-	background-color: rgba(0,0,0,0.3) !important;
-	border:0 !important;
-	color: white !important;
-	cursor: pointer;
 }
 .send_btn{
 	border-radius: 0 15px 15px 0 !important;
-	background-color: rgba(0,0,0,0.3) !important;
-	border:0 !important;
-	color: white !important;
-	cursor: pointer;
 }
 .search_btn{
 	border-radius: 0 15px 15px 0 !important;
-	background-color: rgba(0,0,0,0.3) !important;
-	border:0 !important;
-	color: white !important;
-	cursor: pointer;
 }
+
+/* 🎤 Mic Button Styling */
+#micButton {
+	background-color: rgba(0,0,0,0.3);
+	border: 0;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px 12px;
+	border-radius: 50%;
+	transition: background-color 0.3s ease;
+	margin-left: 10px;
+}
+
+/* Mic Button Hover Effect */
+#micButton:hover {
+	background-color: rgba(255,255,255,0.2);
+}
+
+/* Mic Button Loading Effect (Blinking) */
+#micButton.listening {
+	animation: blink 1s infinite;
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 0.6; }
+	100% { opacity: 1; }
+}
+
+/* Chat UI Styling */
 .contacts{
 	list-style: none;
 	padding: 0;
@@ -92,13 +117,11 @@ border-radius: 0 0 15px 15px !important;
 	height: 70px;
 	width: 70px;
 	border:1.5px solid #f5f6fa;
-
 }
 .user_img_msg{
 	height: 40px;
 	width: 40px;
 	border:1.5px solid #f5f6fa;
-
 }
 .img_cont{
 	position: relative;
