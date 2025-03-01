@@ -25,6 +25,7 @@ https://github.com/user-attachments/assets/020c119d-bb15-4ab1-a5c7-f811c7adc714
 
  ## ✨ Features  
 ✅ **Natural Language Understanding:** Uses `Google Generative AI` for intelligent responses.  
+✅ **Voice Query Support:** Users can ask fitness-related questions using speech input.
 ✅ **Contextual Answers:** Retrieves information from vector storage using `Pinecone`.  
 ✅ **Interactive Web Interface:** Built with `Flask` and styled using Bootstrap.  
 ✅ **PDF Integration:** Loads fitness-related PDFs for contextual retrieval.  
@@ -55,20 +56,26 @@ PINECONE_API_KEY=your_pinecone_key
 GOOGLE_API_KEY=your_google_key
 ```
 
-#### 5. Running the chatbot
+#### 5. Create a new pinecone index (Only when new index had to be created or new pdf is used)
+```bash
+python vector_store.py
+```
+
+#### 6. Running the chatbot
 ```bash
 python app.py
 ```
 Open http://localhost:5000/ in your browser
 
 ## 📌 Working
-1️⃣ User Input: The chatbot receives a query via the web UI.  
+1️⃣ User Input: The chatbot now supports both text and voice input via the web UI.  
 2️⃣ Retrieval: It searches for relevant context in Pinecone.  
 3️⃣ Response Generation: It feeds the retrieved documents to Google Gemini for answer generation.  
 4️⃣ Display Response: The chatbot returns a concise, relevant answer.
 
 ## 🛠️ Tech Stack  
 **Flask** – Backend API  
+**SpeechRecognition** - Converts voice input to text  
 **LangChain** – Chaining retrieval and response generation  
 **Pinecone** – Vector-based retrieval  
 **Google Generative AI Embeddings** – Embeddings for document storage  
