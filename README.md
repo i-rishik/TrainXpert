@@ -16,7 +16,7 @@ https://github.com/user-attachments/assets/c8bd385c-a7e7-4fc5-9ed0-f2a5d038926e
  ┣ 📂 static  
  ┃ ┣ 📜 styles.css  
  ┣ 📂 templates  
- ┃ ┣ 📜 index.html
+ ┃ ┣ 📜 index.html  
  ┣ 📜 .env  
  ┣ 📜 app.py  
  ┣ 📜 requirements.txt  
