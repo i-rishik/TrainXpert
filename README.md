@@ -81,4 +81,4 @@ Open http://localhost:5000/ in your browser
 **LangChain** – Chaining retrieval and response generation  
 **Pinecone** – Vector-based retrieval  
 **Google Generative AI Embeddings** – Embeddings for document storage  
-**HTML & CSS** – Basic UI with Bootstrap styling  
+**HTML & CSS** – Basic UI with CSS styling  
