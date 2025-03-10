@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/c8bd385c-a7e7-4fc5-9ed0-f2a5d038926e
 
  ## ✨ Features  
 ✅ **Natural Language Understanding:** Uses `Google Generative AI` for intelligent responses.  
-✅ **Voice Query Support:** Users can ask fitness-related questions using speech input.
+✅ **Voice Query Support:** Users can ask fitness-related questions using speech input.  
 ✅ **Contextual Answers:** Retrieves information from vector storage using `Pinecone`.  
 ✅ **Interactive Web Interface:** Built with `Flask` and styled using Bootstrap.  
 ✅ **PDF Integration:** Loads fitness-related PDFs for contextual retrieval.  
